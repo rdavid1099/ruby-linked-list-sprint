@@ -8,6 +8,8 @@ class Node
   end
 
   def clear!
-
+    @value = nil
+    @prev = nil
+    @next = nil
   end
 end

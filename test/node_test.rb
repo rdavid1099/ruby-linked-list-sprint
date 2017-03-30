@@ -32,8 +32,8 @@ class NodeTest < TestHelper
     next_node = Node.new(7, prev: node)
     node.clear!
 
-    assert_equal node.value, nil
-    assert_equal node.next, nil
-    assert_equal node.prev, nil
+    assert_nil node.value
+    assert_nil node.next
+    assert_nil node.prev
   end
 end

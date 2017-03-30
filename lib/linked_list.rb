@@ -50,8 +50,10 @@ class LinkedList
 
     def disconnect_last_node
       last_node = get_last_node
-      new_last_node = last_node.prev
-      new_last_node.next = nil
+      new_last_node = last_node.prev.nil? @init_node
+      if new_last_node.nil?
+        @init_node = nil
+      new_last_node.next = nil unless new_last_node.nil?
       last_node.clear!
     end
 end
