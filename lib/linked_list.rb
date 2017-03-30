@@ -8,10 +8,20 @@ class LinkedList
   end
 
   def first
-    init_node.value
+    init_node.nil? ? nil : init_node.value
   end
 
-  def count
-    0
+  def count()
+    counter = 0
+    return counter if init_node.nil?
   end
+
+  def push(value)
+    init_node.nil? ? set_init_node(value) : nil
+  end
+
+  private
+    def set_init_node(value)
+      @init_node = Node.new(value)
+    end
 end
