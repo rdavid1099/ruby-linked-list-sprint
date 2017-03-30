@@ -7,6 +7,26 @@ class LinkedList
     @init_node = Node.new(init_value) if init_value
   end
 
+  def unshift(value)
+    init_node.nil? ? set_init_node(value) : new_init_value(value)
+  end
+
+  def shift
+    value = init_node.value
+    reset_init_value
+    value
+  end
+
+  def push(value)
+    init_node.nil? ? set_init_node(value) : set_last_node(value)
+  end
+
+  def pop
+    value = get_last_node.value
+    disconnect_last_node
+    value
+  end
+
   def first
     init_node.nil? ? nil : init_node.value
   end
@@ -20,16 +40,6 @@ class LinkedList
     counter += 1
     return counter if node.next.nil?
     count(counter, node.next)
-  end
-
-  def push(value)
-    init_node.nil? ? set_init_node(value) : set_last_node(value)
-  end
-
-  def pop
-    value = get_last_node.value
-    disconnect_last_node
-    value
   end
 
   private
@@ -52,5 +62,17 @@ class LinkedList
       last_node = get_last_node
       last_node.prev.nil? ? (@init_node = nil) : (last_node.prev.next = nil)
       last_node.clear!
+    end
+
+    def reset_init_value
+      old_init = init_node
+      @init_node = old_init.next
+      old_init.clear!
+    end
+
+    def new_init_value(value)
+      new_init = Node.new(value, next: init_node)
+      init_node.prev = new_init
+      @init_node = new_init
     end
 end

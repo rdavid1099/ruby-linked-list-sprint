@@ -75,6 +75,27 @@ class LinkedListTest < TestHelper
     list.push(27)
     list.push(55)
 
-    ass
+    assert_equal list.shift, 1
+    assert_equal list.count, 3
+    assert_equal list.first, 14
+    assert_equal list.shift, 14
+    assert_equal list.first, 27
+    assert_equal list.count, 2
+    list.shift
+    list.shift
+    assert_equal list.count, 0
+    assert_nil list.first
+    assert_nil list.last
+  end
+
+  def test_list_can_be_unshifted
+    list = LinkedList.new
+    list.unshift(5)
+    list.unshift(10)
+    list.unshift(15)
+
+    assert_equal list.pop, 5
+    assert_equal list.first, 15
+    assert_equal list.last, 10
   end
 end
