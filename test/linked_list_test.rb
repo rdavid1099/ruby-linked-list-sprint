@@ -120,6 +120,7 @@ class LinkedListTest < TestHelper
     assert_equal list.pop_at_index(2), 76
     assert_equal list.count, 4
     assert_equal list.pop_at_index(2), 81
+    assert_equal list.count, 3
     assert_equal list.pop_at_index(2), 902
     assert_nil list.pop_at_index(2)
     assert_nil list.pop_at_index(-2)

@@ -28,10 +28,12 @@ class LinkedList
   end
 
   def pop_at_index(index)
-    return nil if init_node.nil? || index < 0 || index > count
+    return nil if init_node.nil? || index < 0 || index >= count
     desired_node = get_node_at(index)
-    desired_node.prev.nil? ? (@init_node = nil) : (desired_node.prev.next = desired_node.next)
-    desired_node.value
+    desired_node.prev.nil? ? (@init_node = nil) : rewire_nodes(desired_node)
+    val = desired_node.value
+    desired_node.clear!
+    val
   end
 
   def first
@@ -43,7 +45,7 @@ class LinkedList
   end
 
   def val_at_index(index, counter = 0, node = init_node)
-    return nil if node.nil? || index < 0 || index > count
+    return nil if node.nil? || index < 0 || index >= count
     return node.value if index == counter
     val_at_index(index, counter += 1, node.next)
   end
@@ -92,5 +94,12 @@ class LinkedList
     def get_node_at(index, counter = 0, node = init_node)
       return node if index == counter
       get_node_at(index, counter += 1, node.next)
+    end
+
+    def rewire_nodes(node)
+      prev_node = node.prev
+      next_node = node.next
+      prev_node.next = next_node
+      next_node.prev = prev_node unless next_node.nil?
     end
 end
