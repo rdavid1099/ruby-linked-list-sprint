@@ -6,4 +6,17 @@ class LinkedListTest < TestHelper
 
     assert_equal empty_list.count, 0
   end
+
+  def test_linked_list_can_be_initialized_with_a_value
+    list = LinkedList.new(5)
+
+    assert_equal list.first, 5
+  end
+
+  def test_value_can_be_added_to_empty_list
+    list = LinkedList.new
+    list.push(5)
+
+    ass
+  end
 end
