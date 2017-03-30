@@ -30,6 +30,10 @@ class LinkedList
   def pop_at_index(index)
     return nil if init_node.nil? || index < 0 || index > count
     desired_node = get_node_at(index)
+    desired_node.prev.nil? ? (@init_node = nil) : (desired_node.prev.next = desired_node.next)
+    value = desired_node.value
+    desired_node.clear!
+    value
   end
 
   def first
@@ -88,7 +92,7 @@ class LinkedList
     end
 
     def get_node_at(index, counter = 0, node = init_node)
-      return node if index == 0
+      return node if index == counter
       get_node_at(index, counter += 1, node.next)
     end
 end
