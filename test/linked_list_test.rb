@@ -98,4 +98,15 @@ class LinkedListTest < TestHelper
     assert_equal list.first, 15
     assert_equal list.last, 10
   end
+
+  def test_list_returns_value_at_index
+    list = LinkedList.new(5)
+    list.push(15)
+    list.push(76)
+
+    assert_equal list.val_at_index(1), 15
+    assert_equal list.val_at_index(0), 5
+    assert_nil list.val_at_index(78)
+    assert_nil list.val_at_index(-34)
+  end
 end

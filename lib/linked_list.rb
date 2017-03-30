@@ -35,6 +35,12 @@ class LinkedList
     init_node.nil? ? nil : get_last_node.value
   end
 
+  def val_at_index(index, counter = 0, node = init_node)
+    return nil if node.nil? || index < 0 || index > count
+    return node.value if index == counter
+    val_at_index(index, counter += 1, node.next)
+  end
+
   def count(counter = 0, node = init_node)
     return 0 if node.nil?
     counter += 1
