@@ -32,4 +32,17 @@ class LinkedListTest < TestHelper
     assert_equal list.last, 6
     assert_equal 2, list.count
   end
+
+  def test_value_can_be_popped_from_end_of_list
+    list = LinkedList.new(1)
+    list.push(16)
+    list.push(4)
+    list.push(20)
+
+    assert_equal 20, list.pop
+    assert_equal 3, list.count
+    assert_equal 4, list.pop
+    assert_equal 2, list.count
+    assert_equal 16, list.last
+  end
 end

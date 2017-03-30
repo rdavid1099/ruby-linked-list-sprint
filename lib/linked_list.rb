@@ -26,6 +26,12 @@ class LinkedList
     init_node.nil? ? set_init_node(value) : set_last_node(value)
   end
 
+  def pop
+    value = get_last_node.value
+    disconnect_last_node
+    value
+  end
+
   private
     def set_init_node(value)
       @init_node = Node.new(value)
@@ -40,5 +46,12 @@ class LinkedList
     def get_last_node(node = init_node)
       return node if node.next.nil?
       get_last_node(node.next)
+    end
+
+    def disconnect_last_node
+      last_node = get_last_node
+      new_last_node = last_node.prev
+      new_last_node.next = nil
+      last_node.clear!
     end
 end

@@ -25,4 +25,15 @@ class NodeTest < TestHelper
     assert_equal node.next.value, 7
     assert_equal node.value, 6
   end
+
+  def test_it_can_be_cleared
+    prev_node = Node.new(5)
+    node = Node.new(6, prev: prev_node)
+    next_node = Node.new(7, prev: node)
+    node.clear!
+
+    assert_equal node.value, nil
+    assert_equal node.next, nil
+    assert_equal node.prev, nil
+  end
 end

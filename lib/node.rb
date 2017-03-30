@@ -6,4 +6,8 @@ class Node
     @prev = links[:prev]
     @next = links[:next]
   end
+
+  def clear!
+
+  end
 end
