@@ -12,7 +12,7 @@ class LinkedList
   end
 
   def last
-    get_last_node.value
+    init_node.nil? ? nil : get_last_node.value
   end
 
   def count(counter = 0, node = init_node)
@@ -50,10 +50,7 @@ class LinkedList
 
     def disconnect_last_node
       last_node = get_last_node
-      new_last_node = last_node.prev.nil? @init_node
-      if new_last_node.nil?
-        @init_node = nil
-      new_last_node.next = nil unless new_last_node.nil?
+      last_node.prev.nil? ? (@init_node = nil) : (last_node.prev.next = nil)
       last_node.clear!
     end
 end

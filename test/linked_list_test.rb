@@ -67,4 +67,14 @@ class LinkedListTest < TestHelper
     assert_nil list.last
     assert_equal list.count, 0
   end
+
+  def test_list_can_be_shifted
+    list = LinkedList.new
+    list.push(1)
+    list.push(14)
+    list.push(27)
+    list.push(55)
+
+    ass
+  end
 end
