@@ -31,9 +31,7 @@ class LinkedList
     return nil if init_node.nil? || index < 0 || index > count
     desired_node = get_node_at(index)
     desired_node.prev.nil? ? (@init_node = nil) : (desired_node.prev.next = desired_node.next)
-    value = desired_node.value
-    desired_node.clear!
-    value
+    desired_node.value
   end
 
   def first
