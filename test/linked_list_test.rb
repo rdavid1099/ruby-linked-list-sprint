@@ -109,4 +109,20 @@ class LinkedListTest < TestHelper
     assert_nil list.val_at_index(78)
     assert_nil list.val_at_index(-34)
   end
+
+  def test_list_can_pop_value_from_index
+    list = LinkedList.new(5)
+    list.push(15)
+    list.push(76)
+    list.push(81)
+    list.push(902)
+
+    assert_equal list.pop_at_index(2), 76
+    assert_equal list.count, 4
+    assert_equal list.pop_at_index(2), 81
+    assert_equal list.pop_at_index(2), 902
+    assert_nil list.pop_at_index(2)
+    assert_nil list.pop_at_index(-2)
+    assert_equal list.count, 2
+  end
 end
