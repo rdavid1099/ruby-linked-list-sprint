@@ -16,11 +16,20 @@ class LinkedListTest < TestHelper
   def test_value_can_be_added_to_empty_list
     list = LinkedList.new
 
-    assert_equal list.first, nil
+    assert_nil list.first
 
     list.push(5)
 
     assert_equal list.first, 5
     assert_equal list.count, 1
+  end
+
+  def test_second_value_can_be_pushed_to_list
+    list = LinkedList.new(5)
+    list.push(6)
+
+    assert_equal list.first, 5
+    assert_equal list.last, 6
+    assert_equal 2, list.count
   end
 end
